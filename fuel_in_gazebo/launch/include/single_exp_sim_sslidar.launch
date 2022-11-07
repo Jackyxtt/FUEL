@@ -75,4 +75,9 @@
 		<param name="waypoint_type" value="point"/>    
 	</node>
 
+
+	<include file="$(find px4ctrl)/launch/run_ctrl.launch">
+		<arg name= "ctrl_odom" value="$(arg odom_topic)"/>
+		<arg name= "ctrl_cmd" value="$(arg uav_name)/planning/pos_cmd"/>
+	</include>
 </launch>

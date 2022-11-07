@@ -1,0 +1,21 @@
+<launch>
+
+	<arg name="ctrl_odom" default="/uav1/mavros/local_position/odom"/>
+	<arg name="ctrl_cmd" default="/uav1/planning/pos_cmdm"/>
+	<node pkg="px4ctrl" type="px4ctrl_node" name="px4ctrl" output="screen" launch-prefix="gnome-terminal --tab --">
+        	<!-- <remap from="~odom" to="/vicon_imu_ekf_odom" /> -->
+			
+		<remap from="~odom" to="$(arg ctrl_odom)" />
+		<remap from="/mavros/imu/data" to="/uav1/mavros/imu/data" />
+		<remap from="/mavros/state" to="/uav1/mavros/state" />
+		<remap from="/mavros/extended_state" to="/uav1/mavros/extended_state" />
+
+		<remap from="~cmd" to="$(arg ctrl_cmd)" />
+		<remap from = "/mavros/setpoint_raw/attitude" to = "/uav1/mavros/setpoint_raw/attitude"/>
+        <rosparam command="load" file="$(find px4ctrl)/config/ctrl_param_fpv.yaml" />
+	</node>
+
+	<node name="terminal_cmd" pkg="px4ctrl" type="terminal_cmd" output="screen" launch-prefix="gnome-terminal --tab --">
+	</node>
+ 
+</launch>

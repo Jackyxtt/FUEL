@@ -68,16 +68,16 @@
 
 
 <!-- run the px4_sender -->
-<node pkg="prometheus_control" type="px4_sender" name="px4_sender" output="screen">
+<!-- <node pkg="prometheus_control" type="px4_sender" name="px4_sender" output="screen">
 	<rosparam command="load" file="$(find exploration_manager)/config/px4_sender.yaml"/>
 	<param name="uav_name" value="$(arg uav_name)"/>
-</node>
+</node> -->
 
 
 <!-- run the ground_station -->
-<node pkg="prometheus_station" type="ground_station" name="ground_station" output="screen" launch-prefix="gnome-terminal --tab --">
+<!-- <node pkg="prometheus_station" type="ground_station" name="ground_station" output="screen" launch-prefix="gnome-terminal tab ">
 	<param name="uav_name" value="$(arg uav_name)"/>	
-</node>
+</node> -->
 
 
 </launch>
